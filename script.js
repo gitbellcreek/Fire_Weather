@@ -266,14 +266,13 @@ Unshaded PIG: ${unshadedPIG}%
         }
 
         input.addEventListener('focus', (e) => {
-            smiley.style.top = `${e.target.offsetTop - 30}px`; // Position smiley above the input
-            smiley.style.display = 'block';
-            smiley.classList.add('bounce');
+            const inputRect = e.target.getBoundingClientRect();
+            const formGroupRect = e.target.parentElement.getBoundingClientRect();
+            const topOffset = inputRect.top - formGroupRect.top;
 
-            // Remove the animation class after it finishes
-            setTimeout(() => {
-                smiley.classList.remove('bounce');
-            }, 600);
+            smiley.style.top = `${topOffset - 30}px`; // Position smiley above the input
+            smiley.style.left = `${e.target.offsetLeft + e.target.offsetWidth / 2}px`;
+            smiley.style.display = 'block';
         });
 
         input.addEventListener('blur', () => {
