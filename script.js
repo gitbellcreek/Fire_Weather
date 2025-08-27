@@ -251,7 +251,7 @@ Unshaded PIG: ${unshadedPIG}%
     });
 
     // --- SMILEY FACE ANIMATION (New Implementation) ---
-
+/*
     const inputs = document.querySelectorAll('input, select');
 
     inputs.forEach(input => {
@@ -279,4 +279,5 @@ Unshaded PIG: ${unshadedPIG}%
             smiley.style.display = 'none';
         });
     });
+*/
 });
