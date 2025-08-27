@@ -96,6 +96,7 @@ pre {
     background-size: cover;
     display: none;
     z-index: 1000;
+    pointer-events: none; /* Add this to allow clicks to pass through */
 }
 
 .bounce {
