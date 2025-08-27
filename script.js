@@ -249,4 +249,32 @@ Unshaded PIG: ${unshadedPIG}%
         document.getElementById('radio-output').textContent = radioOutput.trim();
         document.getElementById('results').classList.remove('hidden');
     });
+
+    // --- SMILEY FACE ANIMATION ---
+
+    // Create the smiley element
+    const smiley = document.createElement('div');
+    smiley.classList.add('smiley');
+    document.body.appendChild(smiley);
+
+    const inputs = document.querySelectorAll('input, select');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', (e) => {
+            const rect = e.target.getBoundingClientRect();
+            smiley.style.display = 'block';
+            smiley.style.top = `${window.scrollY + rect.top - 35}px`; // Position above the input
+            smiley.style.left = `${window.scrollX + rect.left + (rect.width / 2) - 15}px`; // Center horizontally
+            smiley.classList.add('bounce');
+
+            // Remove the class after the animation finishes to allow re-triggering
+            setTimeout(() => {
+                smiley.classList.remove('bounce');
+            }, 600);
+        });
+
+        input.addEventListener('blur', () => {
+            smiley.style.display = 'none';
+        });
+    });
 });
