@@ -250,24 +250,27 @@ Unshaded PIG: ${unshadedPIG}%
         document.getElementById('results').classList.remove('hidden');
     });
 
-    // --- SMILEY FACE ANIMATION ---
-
-    // Create the smiley element
-    const smiley = document.createElement('div');
-    smiley.classList.add('smiley');
-    document.body.appendChild(smiley);
+    // --- SMILEY FACE ANIMATION (New Implementation) ---
 
     const inputs = document.querySelectorAll('input, select');
 
     inputs.forEach(input => {
+        // Create a smiley for each input
+        const smiley = document.createElement('div');
+        smiley.classList.add('smiley');
+
+        // Insert the smiley into the input's parent element
+        const parent = input.parentElement;
+        if (parent && parent.classList.contains('form-group')) {
+            parent.appendChild(smiley);
+        }
+
         input.addEventListener('focus', (e) => {
-            const rect = e.target.getBoundingClientRect();
+            smiley.style.top = `${e.target.offsetTop - 30}px`; // Position smiley above the input
             smiley.style.display = 'block';
-            smiley.style.top = `${window.scrollY + rect.top - 35}px`; // Position above the input
-            smiley.style.left = `${window.scrollX + rect.left + (rect.width / 2) - 15}px`; // Center horizontally
             smiley.classList.add('bounce');
 
-            // Remove the class after the animation finishes to allow re-triggering
+            // Remove the animation class after it finishes
             setTimeout(() => {
                 smiley.classList.remove('bounce');
             }, 600);
