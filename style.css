@@ -91,7 +91,7 @@ pre {
 
 .smiley {
     position: absolute;
-    top: 0px; /* Position above the input */
+    top: -25px; /* Position above the input */
     left: 50%;
     transform: translateX(-50%);
     width: 30px;
