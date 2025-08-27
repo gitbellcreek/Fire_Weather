@@ -266,12 +266,9 @@ Unshaded PIG: ${unshadedPIG}%
         }
 
         input.addEventListener('focus', (e) => {
-            const inputRect = e.target.getBoundingClientRect();
-            const formGroupRect = e.target.parentElement.getBoundingClientRect();
-            const topOffset = inputRect.top - formGroupRect.top;
-
-            smiley.style.top = `${topOffset - 30}px`; // Position smiley above the input
-            smiley.style.left = `${e.target.offsetLeft + e.target.offsetWidth / 2}px`;
+            // Position smiley 30px above the top of the input
+            smiley.style.top = `${e.target.offsetTop - 30}px`;
+            // The horizontal centering is handled by `left: 50%` and `transform: translateX(-50%)` in the CSS
             smiley.style.display = 'block';
         });
 
